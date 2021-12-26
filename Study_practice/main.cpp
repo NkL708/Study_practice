@@ -26,7 +26,7 @@ HashTable::HashTable(int c)
 }
 
 void HashTable::insertItem(int key, int data)
-{
+{ 
     int index = hashFunction(key);
     table[index].push_back(data);
 }
@@ -34,14 +34,10 @@ void HashTable::insertItem(int key, int data)
 void HashTable::deleteItem(int key)
 {
     int index = hashFunction(key);
-    list<int>::iterator i;
-    for (i = table[index].begin(); i != table[index].end(); i++) {
-        if (*i == key) {
-            break;
+    for (int i = 0; i < 10; i++) {
+        if (i == index) {
+            table[index].pop_front();
         }
-    }
-    if (i != table[index].end()) {
-        table[index].erase(i);
     }
 }
 
@@ -59,6 +55,7 @@ void HashTable::displayHash()
         }
         cout << endl;
     }
+    cout << endl;
 }
 
 int HashTable::checkPrime(int n)
@@ -86,7 +83,6 @@ int HashTable::getPrime(int n)
     return n;
 }
 
-// Пример для листинга
 int main()
 {
     int key[] = { 231, 321, 212, 321, 433, 262 };
@@ -96,5 +92,9 @@ int main()
     for (int i = 0; i < size; i++) {
         table.insertItem(key[i], data[i]);
     }
+    table.displayHash();
+    table.deleteItem(231);
+    table.displayHash();
+    table.deleteItem(321);
     table.displayHash();
 }
