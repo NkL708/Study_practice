@@ -9,7 +9,7 @@ class HashTable
     list<int>* table;
 
 public:
-    HashTable(int V);
+    HashTable(int c);
     void insertItem(int key, int data);
     void deleteItem(int key);
     int checkPrime(int n);
@@ -86,6 +86,7 @@ int HashTable::getPrime(int n)
     return n;
 }
 
+// Пример для листинга
 int main()
 {
     int key[] = { 231, 321, 212, 321, 433, 262 };
@@ -95,6 +96,5 @@ int main()
     for (int i = 0; i < size; i++) {
         table.insertItem(key[i], data[i]);
     }
-    table.deleteItem(12);
     table.displayHash();
 }
